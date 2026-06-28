@@ -89,7 +89,7 @@ export default function ComparePage() {
                 <td style={{ padding: '0.5rem', borderBottom: '1px solid rgba(255,255,255,0.03)' }}>{row.label}</td>
                 {selectedData.map(d => (
                   <td key={d.stateId} style={{ padding: '0.5rem', borderBottom: '1px solid rgba(255,255,255,0.03)', textAlign: 'right' }} className="mono-value">
-                    {(d as Record<string, unknown>)[row.key] as number}
+                    {(d as any)[row.key]}
                   </td>
                 ))}
               </tr>
