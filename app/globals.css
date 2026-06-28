@@ -451,9 +451,9 @@ body.research-mode ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
 }
 
 @keyframes meteor {
-  0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+  0% { transform: translateX(100px) translateY(-100px) rotate(-45deg); opacity: 1; }
   70% { opacity: 1; }
-  100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  100% { transform: translateX(-100vw) translateY(100vh) rotate(-45deg); opacity: 0; }
 }
 
 @keyframes aurora-drift {
@@ -535,7 +535,7 @@ body.research-mode .cosmic-bg { display: none; }
   position: fixed;
   width: 2px;
   height: 80px;
-  background: linear-gradient(to top, rgba(255,255,255,0.9), transparent);
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.9));
   animation: meteor var(--meteor-duration, 4s) linear infinite;
   animation-delay: var(--meteor-delay, 0s);
   opacity: 0;

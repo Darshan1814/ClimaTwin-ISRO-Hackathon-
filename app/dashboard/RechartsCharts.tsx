@@ -23,27 +23,37 @@ export default function RechartsCharts({ type, data }: ChartProps) {
     text: isOperational ? '#94A3B8' : '#64748B',
   };
 
-  if (type === 'rainfall') {
-    // 7-day rainfall trend
+  // Rainfall chart data
+  const rainfallChartData = useMemo(() => {
+    if (type !== 'rainfall') return [];
     const today = new Date();
-    const chartData = useMemo(() => {
-      return Array.from({ length: 7 }, (_, i) => {
-        const d = new Date(today);
-        d.setDate(d.getDate() - (6 - i));
-        const dateStr = d.toISOString().split('T')[0];
-        const dayData = INDIA_STATES.slice(0, 10).map((s, idx) => generateClimateData(s, dateStr, idx));
-        const avg = dayData.reduce((s, dp) => s + dp.rainfall_mm, 0) / dayData.length;
-        return {
-          day: d.toLocaleDateString('en-IN', { weekday: 'short' }),
-          rainfall: Math.round(avg * 10) / 10,
-        };
-      });
-    }, []);
+    return Array.from({ length: 7 }, (_, i) => {
+      const d = new Date(today);
+      d.setDate(d.getDate() - (6 - i));
+      const dateStr = d.toISOString().split('T')[0];
+      const dayData = INDIA_STATES.slice(0, 10).map((s, idx) => generateClimateData(s, dateStr, idx));
+      const avg = dayData.reduce((s, dp) => s + dp.rainfall_mm, 0) / dayData.length;
+      return {
+        day: d.toLocaleDateString('en-IN', { weekday: 'short' }),
+        rainfall: Math.round(avg * 10) / 10,
+      };
+    });
+  }, [type]);
 
+  // Temp anomaly chart data
+  const anomalyData = useMemo(() => {
+    if (type !== 'tempAnomaly') return [];
+    return data.slice(0, 12).map(d => ({
+      state: d.stateId,
+      anomaly: Math.round((d.max_temp_c - (INDIA_STATES.find(s => s.id === d.stateId)?.avgMaxTemp || 30)) * 10) / 10,
+    }));
+  }, [data, type]);
+
+  if (type === 'rainfall') {
     return (
       <div style={{ width: '100%', height: 200 }}>
         <ResponsiveContainer>
-          <AreaChart data={chartData}>
+          <AreaChart data={rainfallChartData}>
             <defs>
               <linearGradient id="rainfallGrad" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor={colors.primary} stopOpacity={0.4} />
@@ -70,13 +80,6 @@ export default function RechartsCharts({ type, data }: ChartProps) {
   }
 
   if (type === 'tempAnomaly') {
-    const anomalyData = useMemo(() => {
-      return data.slice(0, 12).map(d => ({
-        state: d.stateId,
-        anomaly: Math.round((d.max_temp_c - (INDIA_STATES.find(s => s.id === d.stateId)?.avgMaxTemp || 30)) * 10) / 10,
-      }));
-    }, [data]);
-
     return (
       <div style={{ width: '100%', height: 200 }}>
         <ResponsiveContainer>
