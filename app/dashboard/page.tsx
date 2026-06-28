@@ -234,7 +234,7 @@ export default function MissionControl() {
         </div>
         <div className="card">
           <h3 className="heading-sm" style={{ fontSize: '0.85rem', marginBottom: '0.75rem' }}>
-            Monsoon Progress 2025
+            Monsoon Progress 2026
           </h3>
           <RechartsCharts type="monsoonProgress" data={allData} />
         </div>

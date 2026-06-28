@@ -100,7 +100,7 @@ export default function RainfallPage() {
       {/* Bottom Charts */}
       <div className="grid-3" style={{ marginBottom: '1.5rem' }}>
         <div className="card">
-          <h3 className="heading-sm" style={{ marginBottom: '0.75rem' }}>Annual Rainfall Trend (1995-2025)</h3>
+          <h3 className="heading-sm" style={{ marginBottom: '0.75rem' }}>Annual Rainfall Trend (1996-2026)</h3>
           <RainfallCharts type="annual" />
         </div>
         <div className="card">

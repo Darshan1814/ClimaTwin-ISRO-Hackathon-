@@ -61,8 +61,13 @@ export default function DashboardLayout({
       {isOperational && <CosmicBackground />}
 
       <div className="dashboard-layout">
+        {/* Mobile Overlay */}
+        <div 
+          className={`sidebar-overlay ${sidebarOpen ? 'active' : ''}`}
+          onClick={() => setSidebarOpen(false)}
+        />
         {/* Sidebar */}
-        <aside className={`sidebar ${sidebarOpen ? 'sidebar-open' : 'sidebar-collapsed'}`}>
+        <aside className={`sidebar ${sidebarOpen ? 'sidebar-open' : ''}`}>
           <div className="sidebar-logo">
             <div className="sidebar-logo-monogram">CT</div>
             <div>
@@ -91,7 +96,7 @@ export default function DashboardLayout({
             color: 'var(--text-secondary)',
             textAlign: 'center',
           }}>
-            ISRO × ClimaTwin v1.0
+            ISRO × ClimaTwin 2026
           </div>
         </aside>
 
@@ -101,16 +106,10 @@ export default function DashboardLayout({
           <header className="top-header">
             <div className="header-left">
               <button
+                className="sidebar-toggle"
                 onClick={() => setSidebarOpen(!sidebarOpen)}
-                style={{
-                  padding: '0.5rem',
-                  fontSize: '1.2rem',
-                  color: 'var(--text-secondary)',
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
               >
-                {sidebarOpen ? '◀' : '▶'}
+                ☰
               </button>
               <div className="header-breadcrumb">
                 ClimaTwin / <span>{currentNav.label}</span>

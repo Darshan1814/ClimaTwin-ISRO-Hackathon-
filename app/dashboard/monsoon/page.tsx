@@ -112,7 +112,7 @@ export default function MonsoonPage() {
           <div className="ai-analysis-content">
             <p>Based on current SST patterns and MJO phase analysis, the southwest monsoon is progressing normally across the Indian subcontinent. The monsoon trough is positioned along its climatological normal, extending from the Bay of Bengal low-pressure area westward across central India.</p>
             <p>INSAT-3DR satellite imagery confirms active convective systems over the Arabian Sea, with moisture flux convergence supporting continued northward progression. The monsoon is expected to cover the entire country by the second week of July, within ±3 days of the normal schedule.</p>
-            <p>Seasonal rainfall for June-September 2025 is forecast to be 96-104% of the Long Period Average (LPA: 868.6 mm), indicating a &quot;normal&quot; monsoon season. However, sub-regional variability remains high, with western Rajasthan and parts of northwest India expected to receive below-normal precipitation.</p>
+            <p>Seasonal rainfall for June-September 2026 is forecast to be 96-104% of the Long Period Average (LPA: 868.6 mm), indicating a &quot;normal&quot; monsoon season. However, sub-regional variability remains high, with western Rajasthan and parts of northwest India expected to receive below-normal precipitation.</p>
           </div>
         </div>
 
